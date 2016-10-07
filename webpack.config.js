@@ -9,15 +9,16 @@ module.exports = {
 	entry: [
 		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/only-dev-server',
-		'./src'
+		'./src/index'
 	],
 
 	resolve: {
 		root: path.resolve(__dirname),
 		alias: {
-			'@nm': 'node_modules'
+			'@nm': 'node_modules',
+			'@app': 'src'
 		},
-		extensions: ['', '.css', '.js', '.scss']
+		extensions: ['', '.css', '.js', '.jsx', '.scss']
 	},
 
 	output: {
@@ -32,7 +33,7 @@ module.exports = {
 
 	module: {
 		loaders: [{
-			test: /\.js$/,
+			test: /\.js(x)?$/,
 			loaders: ['react-hot', 'babel'],
 			include: path.join(__dirname, 'src')
 		}, {

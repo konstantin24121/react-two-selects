@@ -1,0 +1,16 @@
+{
+	"lineList" : [
+		{
+			"id": 1,
+			"label": "Item first"
+		},
+		{
+			"id": 2,
+			"label": "Item second"
+		},
+		{
+			"id": 3,
+			"label": "Item third"
+		}
+	]
+}

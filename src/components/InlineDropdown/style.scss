@@ -1,0 +1,80 @@
+$toggle-color: #1565C0;
+$cub-biz: cubic-bezier(0.23, 1, 0.32, 1);
+
+.dropdown{
+
+	// Модификатор для строкового dropdown
+    &_inline{
+		display: inline-block;
+    }
+
+	position: relative;
+
+	&__toggle{
+		color: $toggle-color;
+		will-change: color;
+		transition-property: color;
+		transition-duration: 0.45s;
+		transition-timing-function: $cub-biz;
+		
+		&:hover{
+			cursor: pointer;
+			color: darken($toggle-color, 15%);
+		}
+	}
+
+	&__list{
+		// позицианируем относительно родителя
+		position: absolute;
+		top: 120%;
+		left: 50%;
+		// Сбрасываем стили ul
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		//Наводим красоту
+		min-width: 100px;
+		background-color: #FFF;
+	    border-radius: 2px;
+		box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
+		// Устанавливаем анимацию
+		will-change: transform, opacity;
+		transition-property: transform, opacity;
+		transition-duration: 0.45s;
+		transition-timing-function: $cub-biz;
+	    transform-origin: left top 0px;
+		// Скрытое состояние
+	    transform: scaleY(0);
+	    opacity: 0;
+		z-index: 100;
+		
+	    &_open{
+	    	opacity: 1;
+	    	transform: scaleY(1);
+	    }
+	}
+
+	&__item{
+		padding: 0.5em 2em 0.5em 0.5em;
+		border-bottom: 1px solid #eee;
+		white-space: nowrap;
+
+		&:last-child{
+			// Убираем рамку у последнего элемента списка
+			border-bottom: none;
+		}
+
+		&:hover,
+		&_selected{
+			cursor: pointer;
+			background-color: rgba(0, 0, 0, 0.09);
+		}
+
+		&_selected{
+			background-image: url(check.svg);
+			background-repeat: no-repeat;
+			background-size: 1em;
+			background-position: 95% center;
+		}
+	}
+}
