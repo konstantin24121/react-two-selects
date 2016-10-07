@@ -1,0 +1,12 @@
+node_modules
+bower_components
+npm-debug.log
+
+/public/*.svg
+/public/*.ttf
+/public/*.eot
+/public/*.woff
+/public/*.woff2
+/public/*.js
+/public/*.css
+/public/*.json
