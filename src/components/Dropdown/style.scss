@@ -21,6 +21,19 @@ $cub-biz: cubic-bezier(0.23, 1, 0.32, 1);
 			cursor: pointer;
 			color: darken($toggle-color, 15%);
 		}
+
+		&_button{
+			background-color: #FFF;
+			border-radius: 2px;
+			border: none;
+			padding: 0.5em 1em;
+		    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+		}
+	}
+
+	&__icon{
+		opacity: 0.5;
+		margin-right: 0.5em;
 	}
 
 	&__list{

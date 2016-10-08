@@ -16,7 +16,8 @@ module.exports = {
 		root: path.resolve(__dirname),
 		alias: {
 			'@nm': 'node_modules',
-			'@app': 'src'
+			'@app': 'src',
+			'@static': 'static'
 		},
 		extensions: ['', '.css', '.js', '.jsx', '.scss']
 	},
