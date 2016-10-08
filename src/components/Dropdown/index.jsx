@@ -55,13 +55,10 @@ export default class Dropdown extends React.Component {
 	renderDropDownItems = () =>{
 		const {selectedItem} = this.state;
 		return this.props.list.map( (item) =>  
-			<li 
-				key = {item.id} 
+			<li key = {item.id} 
 				className = {`dropdown__item ${item.id === selectedItem ? 'dropdown__item_selected' : ''}`}		
 				onClick = {this.selectItem.bind(this, item)}
-			>
-				{item.label}
-			</li>
+			>{item.label}</li>
 		);
 	}
 
