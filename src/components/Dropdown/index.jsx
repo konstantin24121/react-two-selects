@@ -85,22 +85,17 @@ export default class Dropdown extends React.Component {
 
 		if(this.props.type === TYPE_INLINE){
 			return (
-				<span 
-					className="dropdown__toggle" 
-					onClick={handler}>{label}</span>
+				<span className="dropdown__toggle" onClick={handler}>{label}</span>
 			)
 		}else if( this.props.type === TYPE_BUTTON ){
 			let iconImg;
 			if ( this.state.icon ){
-				iconImg = <img className="dropdown__icon" 
-					width="18px" 
-					src={this.state.icon}
-				/>
+				iconImg = <img className="dropdown__icon" width="18px" src={this.state.icon} />
 			}
 			return (
-				<button 
-					className="dropdown__toggle dropdown__toggle_button" 
-					onClick={handler}>{iconImg}{label}</button>
+				<button className="dropdown__toggle dropdown__toggle_button" onClick={handler}>
+					{iconImg}{label}
+				</button>
 			)
 		}
 		return (<span></span>);
