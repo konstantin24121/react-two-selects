@@ -35,7 +35,6 @@ export default class App extends React.Component {
 	render() {
 		let {lineList, buttonList} = this.state.jsonData;
 		let {inlineDropdownSelect, buttonDropdownSelect} = this.state;
-		console.log(buttonIcon);
 
 		// setTimeout(() => this.setState({jsonData: {buttonList: this.state.jsonData.lineList}}), 4000);
 		return (
@@ -62,6 +61,7 @@ export default class App extends React.Component {
 						</Panel>
 					</Col>
 				</Row>
+				
 				<Row>
 					<Col xs={12}>
 						<Panel>

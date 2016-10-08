@@ -2,15 +2,17 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
-	devtool: 'eval',
+	entry: './src/index',
 
-	entry: [
-		'webpack-dev-server/client?http://localhost:3000',
-		'webpack/hot/only-dev-server',
-		'./src/index'
-	],
+	output: {
+		path: path.join(__dirname, 'public'),
+		filename: 'bundle.js',
+		publicPath: '/'
+	},
 
 	resolve: {
 		root: path.resolve(__dirname),
@@ -22,24 +24,21 @@ module.exports = {
 		extensions: ['', '.css', '.js', '.jsx', '.scss']
 	},
 
-	output: {
-		path: path.join(__dirname, 'public'),
-		filename: 'bundle.js',
-		publicPath: 'http://localhost:3000/'
-	},
-
 	plugins: [
-		new webpack.HotModuleReplacementPlugin()
+		new ExtractTextPlugin('style.css'),
+		new webpack.optimize.UglifyJsPlugin({
+			compressor: { warnings: false }
+		})
 	],
 
 	module: {
 		loaders: [{
 			test: /\.js(x)?$/,
-			loaders: ['react-hot', 'babel'],
+			loaders: ['babel'],
 			include: path.join(__dirname, 'src')
 		}, {
 			test: /\.scss$/,
-			loaders: ['style', 'css', 'sass']
+			loader: ExtractTextPlugin.extract('css!postcss!sass')
 		}, {
 			test: /\.css$/,
 			loaders: ['style', 'css']
@@ -47,8 +46,10 @@ module.exports = {
 			test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
 			loader: 'url-loader?limit=10000&mimetype=application/font-woff'
 		}, {
-			test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+			test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
 			loader: 'file-loader'
 		}]
-	}
+	},
+
+	postcss: [autoprefixer({ browsers: ['last 2 versions'] })]
 };
