@@ -6,28 +6,13 @@ import './style.scss';
 export const TYPE_INLINE = 'inline';
 export const TYPE_BUTTON = 'button';
 
-/**
- * 
- */
 export default class Dropdown extends React.Component {
 
 	static propTypes = {
-		/**
-		 * Label of dropdown toggle
-		 */
 		label: React.PropTypes.string,
-		/**
-		 * Type of toggle, may be 'button' or 'inline'
-		 */
-		type: React.PropTypes.oneOf([TYPE_INLINE, TYPE_BUTTON])
-		/**
-		 * List of dropdown items
-		 */
 		list: React.PropTypes.arrayOf(React.PropTypes.object),
-		/**
-		 * Callback calls when new item is selected
-		 */
 		onSelected: React.PropTypes.func,
+		type: React.PropTypes.oneOf([TYPE_INLINE, TYPE_BUTTON])
 	};
 
 	static defaultProps  = {
@@ -44,16 +29,17 @@ export default class Dropdown extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
+		this.state = Object.assign({
 			selectedItem: null,
 			listIsOpen: false
-		};
+		}, this.props);
 
 		// Autobinding
 		this.toogleDropDownHandler = this.toogleDropDownHandler.bind(this)
 	}
 
 	// componentWillReceiveProps(nextProps){
+	// 	this.setState(Object.assign(this.state, nextProps));
 	// }
 
 	selectItem(item){
@@ -90,11 +76,8 @@ export default class Dropdown extends React.Component {
 		this.setState({listIsOpen: !this.state.listIsOpen});
 	}
 
-	//Рендер toggle-элемента для открытия Dropdown списка
-	//В зависимости от переданног оprops может быть представлен в виде
-	//кнопки или ввиде inline-текста
 	renderDropDownToggle(){
-		let {label} = this.props;
+		let {label} = this.state;
 		const handler = this.toogleDropDownHandler;
 
 		if(this.props.type === TYPE_INLINE){
@@ -103,8 +86,8 @@ export default class Dropdown extends React.Component {
 			)
 		}else if( this.props.type === TYPE_BUTTON ){
 			let iconImg;
-			if ( this.props.icon ){
-				iconImg = <img className="dropdown__icon" width="18px" src={this.props.icon} />
+			if ( this.state.icon ){
+				iconImg = <img className="dropdown__icon" width="18px" src={this.state.icon} />
 			}
 			return (
 				<button className="dropdown__toggle dropdown__toggle_button" onClick={handler}>
