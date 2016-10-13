@@ -29,6 +29,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "breakpoint-sass": "^2.7.0",
     "chai": "^3.5.0",
+    "classnames": "^2.2.5",
     "css-loader": "^0.23.1",
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^8.0.0",

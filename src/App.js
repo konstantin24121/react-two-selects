@@ -2,7 +2,6 @@ import React from "react";
 import { Panel, Row, Col } from "react-bootstrap";
 
 import Dropdown from "./components/Dropdown";
-import {TYPE_BUTTON as DROPDOWN_TYPE_BUTTON} from "./components/Dropdown";
 import './styles.scss';
 
 let buttonIcon = require('@static/icons/calendar.svg');
@@ -24,11 +23,11 @@ export default class App extends React.Component {
 		this.setState({jsonData: json});
 	}
 
-	inlineDropDownHandler(selectItem){
+	inlineDropDownHandler = (selectItem) => {
 		this.setState({inlineDropdownSelect: selectItem});
 	}
 	
-	buttonDropDownHandler(selectItem){
+	buttonDropDownHandler = (selectItem) => {
 		this.setState({buttonDropdownSelect: selectItem});
 	}
 
@@ -39,17 +38,16 @@ export default class App extends React.Component {
 		// setTimeout(() => this.setState({jsonData: {buttonList: this.state.jsonData.lineList}}), 4000);
 		return (
 			<div className="container">
-				
 				<Row>
 					<Col xs={12}>
 						<Panel>
 							<Row>
 								<Col xs={6}>
 									Выберете <Dropdown 
-										label = 'правильный'
-										list  = {lineList} 
-										onSelected = {this.inlineDropDownHandler.bind(this)}
-									/> вариант
+										list={lineList} 
+										onSelected={this.inlineDropDownHandler}>
+										правильный
+									</Dropdown> вариант
 								</Col>
 								<Col xs={6} className="text-right"> 
 									{inlineDropdownSelect ? 
@@ -68,12 +66,12 @@ export default class App extends React.Component {
 							<Row>
 								<Col xs={6}>
 									<Dropdown 
-										icon = {buttonIcon}
-										label = 'за весь период' 
-										list  = {buttonList} 
-										type  = {DROPDOWN_TYPE_BUTTON}
-										onSelected = {this.buttonDropDownHandler.bind(this)}
-									/>
+										list ={buttonList} 
+										onSelected={this.buttonDropDownHandler}>
+										<button className="toggle toggle_button">
+											<img className="toggle__icon" width="18px" src={buttonIcon} /> Вариант
+										</button>
+									</Dropdown>
 								</Col>
 								<Col xs={6} className="text-right"> 
 									{buttonDropdownSelect ? 

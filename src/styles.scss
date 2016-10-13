@@ -2,3 +2,19 @@ body{
 	font: normal 14px/1.625 Roboto;
 	padding: 2em 1em;
 }
+
+.toggle{
+	&_button{
+		background-color: #FFF;
+		border-radius: 2px;
+		border: none;
+		padding: 0.5em 1em;
+	    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, 
+	    			rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+	}
+
+	&__icon{
+		opacity: 0.5;
+		margin-right: 0.5em;
+	}
+}

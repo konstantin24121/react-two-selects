@@ -3,11 +3,7 @@ $cub-biz: cubic-bezier(0.23, 1, 0.32, 1);
 
 .dropdown{
 
-	// Модификатор для строкового dropdown
-    &_inline{
-		display: inline-block;
-    }
-
+	display: inline-block;
 	position: relative;
 
 	&__toggle{
@@ -21,42 +17,28 @@ $cub-biz: cubic-bezier(0.23, 1, 0.32, 1);
 			cursor: pointer;
 			color: darken($toggle-color, 15%);
 		}
-
-		&_button{
-			background-color: #FFF;
-			border-radius: 2px;
-			border: none;
-			padding: 0.5em 1em;
-		    box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
-		}
 	}
-
-	&__icon{
-		opacity: 0.5;
-		margin-right: 0.5em;
-	}
-
 	&__list{
-		// позицианируем относительно родителя
 		position: absolute;
 		top: 120%;
 		left: 50%;
-		// Сбрасываем стили ul
+
 		margin: 0;
 		padding: 0;
 		list-style: none;
-		//Наводим красоту
+
 		min-width: 100px;
 		background-color: #FFF;
 	    border-radius: 2px;
-		box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, rgba(0, 0, 0, 0.227451) 0px 3px 10px;
-		// Устанавливаем анимацию
+		box-shadow: rgba(0, 0, 0, 0.156863) 0px 3px 10px, 
+					rgba(0, 0, 0, 0.227451) 0px 3px 10px;
+
 		will-change: transform, opacity;
 		transition-property: transform, opacity;
 		transition-duration: 0.45s;
 		transition-timing-function: $cub-biz;
 	    transform-origin: left top 0px;
-		// Скрытое состояние
+
 	    transform: scaleY(0);
 	    opacity: 0;
 		z-index: 100;
@@ -73,7 +55,6 @@ $cub-biz: cubic-bezier(0.23, 1, 0.32, 1);
 		white-space: nowrap;
 
 		&:last-child{
-			// Убираем рамку у последнего элемента списка
 			border-bottom: none;
 		}
 
